@@ -70,7 +70,7 @@ L.geoJson(geojsonFeature, {
       if(currenttime > numberofimages){
         currenttime = numberofimages;
       }else{
-        console.log("working?")
+        console.log("cool.")
       };
 
       //Grab the id of whichever point is selected
@@ -82,7 +82,6 @@ L.geoJson(geojsonFeature, {
 
 // feature.properties[curdate]
 
-      console.log(currentimagedate)
       //Create VCR control, add Info block 
       document.getElementById("info").innerHTML = 
       "<h1>"+feature.properties.farm+"</h1><div class ='infolinebreak'></div><div id=farmphoto></div><div class='buttons'><img src='img/time-end.png' class='time-end'><img src='img/time-next.png' class='time-next'><img src='img/time-prev.png' class='time-prev'><img src='img/time-reset.png' class='time-reset'><div class = datecontainer></div></div><div class ='bottominfolinebreak'></div>";
