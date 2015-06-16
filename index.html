@@ -2,11 +2,9 @@
 <html>
 	<head>
     	<title>AgResource</title>
-	<link href="Style.css" rel="stylesheet" type="text/css" />
   <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'/>
 
 <link rel="stylesheet" href="lib/leaflet.css"/>
-<script src = "jquery-2.1.0.min.js"></script>
 <link rel="points" type="application/json" href="data/farm_points.geojson">
 <!--[if lte IE 8]>
 <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.ie.css" />
@@ -17,7 +15,7 @@
     #feature_infos {
       width:400px;
       height: 400px;
-      background: rgba(255, 255, 255, 0.7);
+      background: rgba(255, 255, 255, 0.8);
       position: absolute;
       top:20px;
       left:20px;
@@ -32,10 +30,27 @@
       border:1px solid #999;
     }
 
-    .welcomeinfobox{
-      background: rgba(0, 0, 0, 1);
-      width: 300px;
-      height:300px;
+    .introductionblockfront{
+      position: absolute;
+      background: rgba(255, 255, 255, 0.8);
+      margin:20px 100px 350px 20px;
+      width: 400px;
+      height:320px;
+      z-index:1;
+      padding:5px;
+      border:2px solid black;
+      border-radius: 10px;
+      box-shadow: 1px 1px 4px black;      
+    }
+
+    .introductionblockfront h2{
+      margin: 4px 0px 8px 0px;
+      text-align:center;
+    }
+
+    .introductionblockfront p{
+      margin-left: 25px;
+      margin-right: 25px;
     }
 
     .infolinebreak{
@@ -104,36 +119,54 @@
       position: relative;
       float: left;
     }
+
+    #legend{      
+      position: absolute;
+      background: rgba(255, 255, 255, 0.8);
+      margin:460px 100px 10px 20px;
+      width: 160px;
+      height:110px;
+      z-index:1;
+      padding:5px;
+      border:2px solid black;
+      border-radius: 10px;
+      box-shadow: 1px 1px 4px black;      
+    }
+
+    .legendtitle{
+     text-align: center;
+    }
+
+    #legend p{
+     padding:2px;
+     margin:2px;
+    }
   </style>
 </head> 
 
 
 <body>
 <div class = "container">
-	   <div id = "map"></div>
-     <div id="feature_infos"> <span id="heading"></span>
-     <div id="info">
+  <div class ="introductionblockfront">
+    <h2>Cereals Tour Map</h2>
+      <div class = "infolinebreak"></div>
 
-     </div>
-  </div>     
+    <p>Throughout the 2015 growing season, AgResource will be going to locations around the American Midwest to monitor crop growth, and sharing our findings with you. But that's not all. We are 
+    opening up Cereals Tour 2015 to the world.
+    <p>As the season progresses, send us pictures of your crop and location. We will compile the images so 
+    everyone can watch as North America grows.
+    <p><i>Select a farm to begin!</i>
+      <div class = "bottominfolinebreak"></div>
+  </div>
+  <div id="legend"><div class="legendtitle">Photo Provided by... </div><div class = "infolinebreak"></div><p>
+<img src="img/A.png" style="vertical-align: middle;"></img> <span style='vertical-align: middle;'> - AgResource</span><p><img src="img/P.png" style='vertical-align: middle;'></img><span style="vertical-align: middle;"> - Public</span></div>
+	<div id = "map"></div>
+
+  <div id="feature_infos"> <span id="heading"></span>
+    <div id="info">
+    </div>
+  </div>  
 </div>
-
-<!--   <div class="sequence-buttons">
-      <div class="button">
-          <button type="button" class="stepBackward">
-              <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-          </button>
-          <button type="button" class="play">
-              <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
-          </button>
-          <button type="button" class="pause">
-             <span class="glyphicon glyphicon-pause" aria-hidden="true"></span>
-          </button>
-          <button type="button" class="stepForward">
-              <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-          </button>
-      </div>
-  </div> -->
 
 <!-- Libraries -->
   <script src="lib/d3.min.js"></script>

@@ -1,21 +1,7 @@
 //Setting up both the current time (When in the time series of images the user is) and Number of Images (How many images there are at a given location) for use later.
-var currenttime = 1;
+var currenttime = 20;
 var numberofimages = 0;
 var dategrabber = "date_"
-
-//Building a Welcome Box, WIP
-// window.onload = welcomeinfobox();
-
-// function welcomeinfobox(){
-//     d3.select('#map')
-//       .append('div')
-//       .attr("width", 300)
-//       .attr("height", 300)    
-//       .attr("class", "welcomeinfobox")
-//       .on("click", function(){
-//         d3.select(".welcomeinfobox").remove();
-//     })
-// };
 
 //Leaflet Map Properties
 var map = L.map('map',{
@@ -63,8 +49,13 @@ L.geoJson(geojsonFeature, {
   onEachFeature: function(feature, layer){
   //Interaction
     layer.on('click', function (e){
+      d3.selectAll(".introductionblockfront").remove();
+
       //Grab how many images the selected farm has
       numberofimages = parseInt(feature.properties.photos_no);
+
+      // Sets Current Time to the final image.
+      // currenttime = numberofimages;
 
       // If Current Time is greater than the number of images, reduce it to the final image. Otherwise, everythings good.
       if(currenttime > numberofimages){
@@ -79,8 +70,6 @@ L.geoJson(geojsonFeature, {
       //Variables to help grab the current date from selected point & current time
       var dategrabberequation = dategrabber+currenttime;
       var currentimagedate = feature.properties[dategrabberequation];
-
-// feature.properties[curdate]
 
       //Create VCR control, add Info block 
       document.getElementById("info").innerHTML = 
@@ -158,12 +147,6 @@ function UpdateDate(curdate){
 function PhotoTimeline(farm){
   var currentimage = "img/"+farm+"/"+currenttime+".jpg";
 
-  // console.log(currentimage);
-
   document.getElementById("farmphoto").innerHTML =
   "<img src='"+currentimage+"'></img>";
-
-  // console.log(farm)
 };
-
-
